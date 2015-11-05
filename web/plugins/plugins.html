@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery插件全局方法</title>
+    <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="../js/jqueryplugin.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var email="mwo@outlook.com"
+            $.validate(email);
+            var flag = $.validate(email);
+            alert(flag);
+
+            //调用局部插件
+            $("body").test("雷")
+        })
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
