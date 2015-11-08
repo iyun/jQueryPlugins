@@ -3,14 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery选择器插件xpath验证</title>
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.validate.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#form1").validate({
+                rules:{
+                    username:{
+                        required: true,
+                        minlength: 6
+                    },
+                    password:{
+                        required: true,
+                        minlength: 6
+                    },
+                    repassword:{
+                        required: true,
+                        minlength: 6,
+                        equalTo: "#password"
+                    },
+                    email:{
+                        required: true,
+                        email: true
+                    }
+                },
+                messages:{
+                    username:{
+                        required: "<span class=''><font color='red'>用户名不能为空！</font></span>",
+                        minlength: "用户名不能少于六位数!"
+                    },
+                    password:{
+                        required: "密码不能为空!",
+                        minlength: "密码不能少于六位数!"
+                    },
+                    repassword:{
+                        required: "确认密码不能为空",
+                        minlength:"确认密码不能少于六位数!",
+                        equalTo: "密码必须一致.."
+                    },
+                    email:"请输入合法的邮箱地址.."
+
+                }
+
+
+            });
+
+
+        })
+    </script>
 </head>
 <body>
     <form id="form1">
-        <input type="text" name="username" id="username">
-        <input type="password" name="password" id="password">
-        <input type="password" name="repassword" id="repassword">
-        <input type="text" name="email" id="email">
-        <input type="submit" value="提交">
+        用户名：<input type="text" name="username" id="username" class="required"><br/><br/>
+        密码：<input type="password" name="password" id="password"><br/><br/>
+        确认密码：<input type="password" name="repassword" id="repassword"><br/><br/>
+        邮箱：<input type="text" name="email" id="email"><br/><br/>
+        <input type="submit" class="submit" value="提交">
 
 
     </form>
