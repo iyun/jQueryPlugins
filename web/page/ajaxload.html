@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ajaxloadDemo</title>
+<script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //window  可以使用js 去绑定，使用jquery 绑定
+
+//			  window.scroll=function(){
+//
+//			  }
+        $(window).scroll(function(){
+            //alert("aa");
+            var t=document.documentElement.scrollTop;
+            if( t>0  && t<800){
+                if($("#message_1>img").size()==0){
+                    loadImage("image1","#message_1");
+                }
+
+            }
+            if( t>800  && t<1600){
+                loadImage("2","#message_2");
+            }
+            if( t>1600  && t<2400){
+                loadImage("3","#message_3");
+            }
+
+            if( t>2400  && t<3200){
+                loadImage("4","#message_4");
+            }
+            if( t>3200  && t<4000){
+                loadImage("5","#message_5");
+            }
+
+            if( t>4000  && t<4800){
+                loadImage("6","#message_6");
+            }
+
+        })
+
+
+        function loadImage(imageType,area){
+            $.ajax({
+                url:"../../imageServlet",
+                data:{
+                    imageType:imageType
+                },
+                type:"POST",
+                success:function(data){
+                    //html  的image 标签
+                    var imagediv="<img src='../../"+data+"' />";
+                    $(area).html(imagediv);
+                }
+            })
+        }
+
+    })
+
+
+</script>
+
+<style type="text/css">
+    .main{
+        min-height:4800px;
+
+    }
+    .main div{
+        border:20px solid #abcdef;
+        height:800px;
+    }
+
+</style>
+</head>
+
+<body>
+<div class="main">
+    <div id="message_1">1f</div>
+    <div id="message_2">2f</div>
+    <div id="message_3">3f</div>
+    <div id="message_4">4f</div>
+    <div id="message_5">5f</div>
+    <div id="message_6">6f</div>
+</div>
+</body>
+</html>
